@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My Chellakutty Kavya ❤️</title>
+  
+  <!-- Romantic Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti Library for Birthday Explosions -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+  <!-- ========================================================================= -->
+  <!-- 🔐 ROMANTIC PASSWORD OVERLAY (LOCKED WITH 'kavya2102007') -->
+  <!-- ========================================================================= -->
+  <div id="passwordOverlay" class="password-overlay">
+    <div class="lock-modal" id="lockModal">
+      <div class="lock-icon-wrap" id="lockIconWrap">
+        <span class="lock-emoji" id="lockEmoji">🔒</span>
+        <span class="lock-glow"></span>
+      </div>
+      <h2 class="lock-title">Chellakutty's World ❤️</h2>
+      <p class="lock-subtitle">
+        This special place is locked with love for one person only. Enter the secret passcode to enter ✨
+      </p>
+
+      <form id="passForm" onsubmit="handleUnlock(event)">
+        <div class="input-group">
+          <input type="password" id="passInput" placeholder="Enter secret password..." autocomplete="off" autofocus>
+          <button type="button" id="togglePassBtn" title="Show/Hide password">👁️</button>
+        </div>
+        <p id="passError" class="pass-error-msg"></p>
+        <button type="submit" id="unlockBtn" class="btn btn-primary unlock-btn">
+          <span>Unlock With Love 💖</span>
+        </button>
+      </form>
+
+      <div class="hint-container">
+        <button type="button" id="hintToggleBtn" class="hint-btn">Need a hint? 💡</button>
+        <p id="hintText" class="hint-text hidden">Hint: Your sweet name + your special birthday date! 🎂</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas for floating background particles (hearts, stars) -->
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- Background Music: Ed Sheeran - Perfect -->
+  <div class="music-pill" id="musicToggle" title="Click to play / pause Perfect by Ed Sheeran">
+    <div class="music-icon" id="musicIcon">🎵</div>
+    <span id="musicText">Ed Sheeran - Perfect</span>
+    <div class="music-waves" id="musicWaves">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Audio streams for Ed Sheeran - Perfect -->
+  <audio id="localAudio" src="perfect.mp3" loop preload="auto"></audio>
+  <div id="ytPlayerContainer" style="position: fixed; top: -100px; left: -100px; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
+    <div id="ytPlayer"></div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero-section">
+    <div class="floating-hearts-container" id="floatingHeartsContainer"></div>
+    
+    <div class="container hero-content">
+      <div class="special-badge">
+        <span class="sparkle-icon">✨</span> It's Your Special Day <span class="sparkle-icon">✨</span>
+      </div>
+      
+      <h1 class="main-title">
+        Happy Birthday <br>
+        <span class="gradient-text cursive-accent">My Chellakutty Kavya</span>
+        <span class="pulse-heart">❤️</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        To the most gorgeous girl in my entire universe — thank you for filling every single day with your radiant smile, gentle kindness, and infinite warmth.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="surpriseBtn">
+          <span>Tap for Love Shower 💖</span>
+        </button>
+        <a href="#memories" class="btn btn-secondary">
+          <span>Relive Our Memories 📸</span>
+        </a>
+      </div>
+
+      <!-- Quick Love Counter / Sweet Banner -->
+      <div class="sweet-counter-banner">
+        <div class="counter-item">
+          <span class="counter-num">11</span>
+          <span class="counter-label">Months Of Endless Love</span>
+        </div>
+        <div class="counter-divider"></div>
+        <div class="counter-item">
+          <span class="counter-num">100%</span>
+          <span class="counter-label">Yours Forever</span>
+        </div>
+        <div class="counter-divider"></div>
+        <div class="counter-item">
+          <span class="counter-num">∞</span>
+          <span class="counter-label">Reasons I Love You</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-down-hint">
+      <span>Scroll Down to Discover</span>
+      <div class="mouse-icon">
+        <div class="wheel"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sweet Highlights Section -->
+  <section class="highlights-section">
+    <div class="container">
+      <div class="section-badge">Everything That Makes You Magical</div>
+      <h2 class="section-title">Why You Mean The World To Me</h2>
+      <div class="highlights-grid">
+        <div class="highlight-card">
+          <div class="card-icon">✨</div>
+          <h3>Your Radiant Smile</h3>
+          <p>Even on the stormiest days, just one look at your smile brings golden sunshine into my world.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="card-icon">🌸</div>
+          <h3>Your Gentle Heart</h3>
+          <p>The softest, most caring and pure-hearted soul. You make the whole world a kinder place.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="card-icon">☕</div>
+          <h3>Our Endless Talks</h3>
+          <p>From silly late-night giggles to deepest dreams, every conversation with you is my favorite.</p>
+        </div>
+        <div class="highlight-card">
+          <div class="card-icon">🏡</div>
+          <h3>My Safe Haven</h3>
+          <p>No matter where we go or what happens, right beside you is the only place I ever want to be.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Memories & Moments Section (With Your Real Photos) -->
+  <section class="memories-section" id="memories">
+    <div class="container">
+      <div class="section-badge">Captured Moments</div>
+      <h2 class="section-title">Our Beautiful Memories 📸</h2>
+      <p class="section-subtitle">
+        Every second spent by your side is a treasured chapter in my heart. Tap any photo to enlarge and read our memory story!
+      </p>
+
+      <!-- Polaroid Gallery Grid (6 Real Memories) -->
+      <div class="polaroid-grid" id="polaroidGrid">
+        
+        <!-- Memory Card 1: Cafe Date -->
+        <div class="polaroid-card" data-tilt="-2" 
+             data-title="Our Cute Cafe Date ☕❤️"
+             data-sub="Lost in your eyes across the table"
+             data-story="Sitting across from you, watching you sip your drink and smile. In that moment, the entire cafe faded away—it was just you and me, sharing conversations and laughter that I never wanted to end.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory1.jpg?v=3" alt="Our sweet cafe date" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">Our Cute Cafe Date ☕❤️</p>
+            <span class="polaroid-date">Lost in your eyes across the table</span>
+          </div>
+        </div>
+
+        <!-- Memory Card 2: Cozy Smile Together -->
+        <div class="polaroid-card" data-tilt="3" 
+             data-title="My Favorite Smile in the World 🌸"
+             data-sub="Pure peace and happiness beside you"
+             data-story="Lying down beside you, sharing quiet giggles and warm smiles. With your head next to mine, the whole world feels calm and peaceful. You are my greatest comfort and sweetest joy.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory2.jpg?v=3" alt="Cozy smile together" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">My Favorite Smile 🌸</p>
+            <span class="polaroid-date">Pure peace and happiness beside you</span>
+          </div>
+        </div>
+
+        <!-- Memory Card 3: Silly Puppy Filter -->
+        <div class="polaroid-card" data-tilt="-3" 
+             data-title="Our Silly Puppy Moments 🐶✨"
+             data-sub="Nobody makes me laugh like you"
+             data-story="Being completely silly, putting on funny puppy filters, and laughing our hearts out. Thank you for always matching my energy and being my favorite partner in crime.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory3.jpg?v=3" alt="Silly puppy filter fun" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">Silly Puppy Moments 🐶✨</p>
+            <span class="polaroid-date">Nobody makes me laugh like you</span>
+          </div>
+        </div>
+
+        <!-- Memory Card 4: Holding Hands -->
+        <div class="polaroid-card" data-tilt="2" 
+             data-title="Holding Your Hand Forever 🤝💖"
+             data-sub="A promise that will never fade"
+             data-story="Your fingers intertwined with mine, fitting so perfectly like they were made just for my hand. Through every twist and turn of life, I promise to never let go of this hold.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory4.jpg?v=3" alt="Holding hands tightly" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">Holding Hands Forever 🤝💖</p>
+            <span class="polaroid-date">A promise that will never fade</span>
+          </div>
+        </div>
+
+        <!-- Memory Card 5: Mirror Selfie with Flower Crown -->
+        <div class="polaroid-card" data-tilt="-1" 
+             data-title="Our Aesthetic Mirror Clicks 📸💫"
+             data-sub="Flowers in our hair, love in our hearts"
+             data-story="Standing together in front of the mirror with flower crowns and cozy warmth. Every snapshot with you becomes my favorite memory and the wallpaper of my heart.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory5.jpg?v=3" alt="Aesthetic mirror click" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">Aesthetic Mirror Click 📸💫</p>
+            <span class="polaroid-date">Flowers in our hair, love in our hearts</span>
+          </div>
+        </div>
+
+        <!-- Memory Card 6: Hand on Shoulder, Leaning Close -->
+        <div class="polaroid-card" data-tilt="2.5" 
+             data-title="Right By My Shoulder 💍🖤"
+             data-sub="Your touch is my safe place"
+             data-story="Your hand resting gently against my shoulder, leaning close together. Having you right by my side makes me feel like I can conquer anything in this world.">
+          <div class="tape-strip"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/memory6.jpg?v=3" alt="Right by my shoulder" loading="lazy">
+            <div class="img-overlay">
+              <span class="overlay-text">Click to view 💖</span>
+            </div>
+          </div>
+          <div class="polaroid-caption">
+            <p class="handwritten">Right By My Shoulder 💍🖤</p>
+            <span class="polaroid-date">Your touch is my safe place</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Love Letter Section: "A Message For You" (Hidden until clicked!) -->
+  <section class="letter-section" id="message-for-you">
+    <div class="container">
+      <div class="section-badge">From The Bottom Of My Heart</div>
+      <h2 class="section-title">A Message For You 💌</h2>
+      <p class="section-subtitle">Click the wax seal below to open and reveal your personal birthday letter</p>
+
+      <div class="letter-wrapper">
+        <div class="wax-envelope" id="waxEnvelope">
+          
+          <!-- Closed Envelope Front with Seal -->
+          <div class="envelope-front" id="envelopeFront">
+            <div class="envelope-flap"></div>
+            <div class="wax-seal" id="waxSeal" title="Click to open your letter!">
+              <div class="seal-inner">❤️</div>
+              <span class="seal-pulse"></span>
+            </div>
+            <p class="envelope-instructions" id="sealInstruction">Click the seal to read my heart 💌</p>
+          </div>
+
+          <!-- Parchment Paper Letter Inside (HIDDEN UNTIL CLICKED) -->
+          <div class="letter-paper" id="letterPaper">
+            <div class="letter-header">
+              <div class="letter-stamp">🎂 Birthday Edition</div>
+              <div class="letter-date" id="letterDate">For My Chellakutty Kavya</div>
+            </div>
+
+            <div class="letter-salutation">My dearest chellakutty kavya,</div>
+
+            <!-- Exact Heartfelt Paragraph from Sriram -->
+            <div class="letter-body" id="customParagraphContainer">
+              <p>
+                Happy birthday my dear chellakutty....Neee vandhu eppaiyume happy...a irukkanum☺️...life...a enjoy pannu...Onnoda birthday innaikku so nee jolly...a irunga nalla saapudunga Innaiku evulo chikken venumo saaptukko😸😸
+              </p>
+              <p>
+                Aprm naamba love panni 11 months aagudhu innum one month...tha aprm 1year aagidum chello 😺💋Naaa onna eppaiyume vittu poga maata idhukku munnaadi nee love pannadhula vidu ana Naandha onnoda last love aprm life partner...a iruppa nee kavala padave vena yaaru vena onna vittutu povanga but naa onna eppaiyume vida maata en thangathu kudave...tha iruppa nee bayapadadha sariyaa onna romba romba romba love pandra chella nee nenachi paakadha alavukku....
+              </p>
+              <p>
+                Namba indha 11 months edhu edhuvo pannom ellame pannitom solla pona....Adhuvum naa kettu nee edhuvume illanu sonnadhe illa ena romba happy...a vachikkana ma nee☺️☺️Naa promise...a romba romba romba happy...a irundha 💞😁
+              </p>
+              <p>
+                ippa kuda enakku nyabagam varudhu onna Firstu onga veetanda vandhu nikkara apa nee odi vandhu gate...a therandhu paarthadhu aprm pinnadi Pakkam vara solli ennoda kai...ya pudichadhula adhula Enakku romba happy..ana moment 😺🥹
+              </p>
+              <p>
+                Namba romba sanda podrom..dha adikadi onna edhaachi kettunudhaa irukka ana adhanaala vittutu pova onna pudikalanu nenaikadha ma onna romba pudichi irukkaradhunaaladha Apadi pandrane and romba sorry chello onna kashta paduthi irundha aprmm once many more happy returns of the day for my pondaatti 🫵😹
+              </p>
+              <p class="final-love-line">
+                Love you so much 😚😗😗😗
+              </p>
+            </div>
+
+            <div class="letter-signature">
+              <p class="sign-off">Forever & Always Yours,</p>
+              <p class="sign-name">Janamajayan ❤️</p>
+            </div>
+
+            <div class="letter-decorations">
+              <span class="decor-flower">🧸</span>
+              <span class="decor-flower">🌸</span>
+              <span class="decor-flower">🐱</span>
+              <span class="decor-flower">💖</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Birthday Cake & Wish Finale -->
+  <section class="cake-section">
+    <div class="container">
+      <div class="section-badge">Make A Wish!</div>
+      <h2 class="section-title">Blow Out Your Candles 🎂</h2>
+      <p class="section-subtitle">Close your eyes, make the sweetest wish in your heart, then tap the candles to blow them out!</p>
+
+      <div class="cake-stage">
+        <div class="cake-container" id="cakeContainer">
+          
+          <!-- Candles with flickering flames -->
+          <div class="candles-row" id="candlesRow">
+            <div class="candle" data-lit="true">
+              <div class="flame"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-pink"></div>
+            </div>
+            <div class="candle center-candle" data-lit="true">
+              <div class="flame"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-gold"></div>
+            </div>
+            <div class="candle" data-lit="true">
+              <div class="flame"></div>
+              <div class="wick"></div>
+              <div class="candle-stick stripe-purple"></div>
+            </div>
+          </div>
+
+          <!-- Cake Tiers -->
+          <div class="cake-tier tier-top">
+            <div class="frosting-drips">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="tier-body">
+              <div class="cherries">🍓 🍓 🍓</div>
+            </div>
+          </div>
+          
+          <div class="cake-tier tier-middle">
+            <div class="frosting-drips">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <div class="tier-body">
+              <div class="tier-pattern">✦ 💖 ✦ 💖 ✦</div>
+            </div>
+          </div>
+
+          <div class="cake-tier tier-bottom">
+            <div class="tier-body">
+              <div class="cream-border"></div>
+            </div>
+          </div>
+
+          <div class="cake-plate"></div>
+        </div>
+
+        <!-- Wish Result Card (Hidden until blown) -->
+        <div class="wish-result" id="wishResult">
+          <div class="wish-emoji">🎉 ✨ 💖 🥳</div>
+          <h3>✨ WISH GRANTED! ✨</h3>
+          <p>May all your deepest dreams and sweetest desires come true this year, Kavya! Happy Birthday!</p>
+          <button class="btn btn-primary" id="relightBtn">Relight Candles 🕯️</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Photo Zooming -->
+  <div class="modal-backdrop" id="photoModal">
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-img-container">
+        <img src="" alt="Enlarged Memory" id="modalImg">
+      </div>
+      <div class="modal-info">
+        <h4 id="modalCaption">Memory Caption</h4>
+        <p id="modalSub">Memory description</p>
+        <button class="like-heart-btn" id="modalHeartBtn">
+          ❤️ <span id="modalHeartCount">6</span> Love
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with Janamajayan ❤️ Kavya and Birthday Date 2.10.2026 -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-heart-anim">❤️</div>
+      <p class="footer-love-text">
+        Created with infinite love, especially for my Chellakutty Kavya on her birthday.
+      </p>
+      <p class="footer-couple-name">Janamajayan ❤️ Kavya</p>
+      <p class="footer-birthday-date">🎂 2.10.2026 • Forever & Always ✨</p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=6"></script>
+</body>
+</html>
